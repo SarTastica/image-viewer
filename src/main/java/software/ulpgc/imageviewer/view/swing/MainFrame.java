@@ -6,6 +6,7 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
     private final ImageDisplay imageDisplay;
+    private final SwingImageDisplay swingDisplay;
 
     public MainFrame() {
         this.setTitle("Image Viewer");
@@ -14,10 +15,10 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        SwingImageDisplay display = new SwingImageDisplay();
+        this.swingDisplay = new SwingImageDisplay();
+        this.imageDisplay = swingDisplay;
 
-        this.imageDisplay = display;
-        this.add(display, BorderLayout.CENTER);
+        this.add(swingDisplay, BorderLayout.CENTER);
         this.add(createToolBar(), BorderLayout.SOUTH);
     }
 
@@ -31,8 +32,8 @@ public class MainFrame extends JFrame {
         JButton prev = new JButton("<");
         JButton next = new JButton(">");
 
-        prev.addActionListener(e -> imageDisplay.on(ImageDisplay.Shift.Left));
-        next.addActionListener(e -> imageDisplay.on(ImageDisplay.Shift.Right));
+        prev.addActionListener(e -> swingDisplay.executeShift(-1));
+        next.addActionListener(e -> swingDisplay.executeShift(1));
 
         panel.add(prev);
         panel.add(next);

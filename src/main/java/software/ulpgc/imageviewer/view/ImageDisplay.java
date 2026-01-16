@@ -1,4 +1,5 @@
 package software.ulpgc.imageviewer.view;
+import software.ulpgc.imageviewer.model.Image;
 
 public interface ImageDisplay {
     void show(software.ulpgc.imageviewer.model.Image image);
