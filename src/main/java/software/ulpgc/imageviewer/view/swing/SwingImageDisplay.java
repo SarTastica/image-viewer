@@ -27,9 +27,9 @@ public class SwingImageDisplay extends JPanel implements ImageDisplay {
         } else {
             this.bitmap = null;
         }
+
         this.repaint();
     }
-
     @Override
     public void paint(Graphics g) {
         g.setColor(Color.BLACK);
@@ -50,6 +50,7 @@ public class SwingImageDisplay extends JPanel implements ImageDisplay {
     public void on(Shift shift) {
         this.shift = shift;
     }
+
     public void executeShift(int offset) {
         this.shift.offset(offset);
     }
