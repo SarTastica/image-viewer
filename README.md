@@ -1,4 +1,4 @@
-# Visor de Imágenes (Image Viewer) 📸
+# Image Viewer
 
 Una aplicación de escritorio robusta desarrollada en Java (Swing) para visualizar imágenes locales. Este proyecto implementa **Arquitectura Limpia** y el patrón **MVP (Modelo-Vista-Presentador)**, garantizando un código desacoplado, mantenible y escalable.
 
@@ -22,7 +22,7 @@ El proyecto sigue estrictamente los principios **SOLID**:
 2.  **Patrones de Diseño utilizados:**
     * **Command Pattern:** Desacopla la invocación de la acción (botones) de la ejecución (`NextCommand`, `PreviousCommand`).
     * **Proxy/Caching:** Optimización en la carga de imágenes (`SwingImageDeserializer`).
-    * **Single Responsibility Principle (SRP):** Clases especializadas como `Resizer` (solo matemáticas de ajuste) y `SwingImageDeserializer` (solo conversión de bytes).
+    * **SRP:** Clases especializadas como `Resizer` (solo matemáticas de ajuste) y `SwingImageDeserializer` (solo conversión de bytes).
 
 ## Estructura del Proyecto
 
