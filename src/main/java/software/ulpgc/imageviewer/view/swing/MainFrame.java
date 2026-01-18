@@ -1,6 +1,6 @@
 package software.ulpgc.imageviewer.view.swing;
 
-import software.ulpgc.imageviewer.control.Command; // Importa tu nueva interfaz
+import software.ulpgc.imageviewer.control.Command;
 import software.ulpgc.imageviewer.view.ImageDisplay;
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class MainFrame extends JFrame {
     private final ImageDisplay imageDisplay;
-    private final Map<String, Command> commands = new HashMap<>(); // Mapa para guardar comandos
+    private final Map<String, Command> commands = new HashMap<>();
 
     public MainFrame() {
         this.setTitle("Image Viewer");
