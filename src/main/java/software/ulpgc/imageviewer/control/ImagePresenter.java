@@ -5,19 +5,26 @@ import software.ulpgc.imageviewer.view.ImageDisplay;
 
 public class ImagePresenter {
     private final ImageDisplay display;
-    private Image image;
+    private Image currentImage;
 
     public ImagePresenter(ImageDisplay display) {
         this.display = display;
-        this.display.on(offset -> {
-            if (offset > 0) image = image.next();
-            else image = image.prev();
-            display.show(image);
-        });
     }
 
     public void show(Image image) {
-        this.image = image;
+        this.currentImage = image;
         this.display.show(image);
+    }
+
+    public void next() {
+        if (currentImage != null) {
+            show(currentImage.next());
+        }
+    }
+
+    public void prev() {
+        if (currentImage != null) {
+            show(currentImage.prev());
+        }
     }
 }

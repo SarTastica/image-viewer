@@ -1,12 +1,15 @@
 package software.ulpgc.imageviewer.view.swing;
 
+import software.ulpgc.imageviewer.control.Command; // Importa tu nueva interfaz
 import software.ulpgc.imageviewer.view.ImageDisplay;
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainFrame extends JFrame {
     private final ImageDisplay imageDisplay;
-    private final SwingImageDisplay swingDisplay;
+    private final Map<String, Command> commands = new HashMap<>(); // Mapa para guardar comandos
 
     public MainFrame() {
         this.setTitle("Image Viewer");
@@ -15,10 +18,9 @@ public class MainFrame extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        this.swingDisplay = new SwingImageDisplay();
-        this.imageDisplay = swingDisplay;
-
-        this.add(swingDisplay, BorderLayout.CENTER);
+        SwingImageDisplay display = new SwingImageDisplay();
+        this.imageDisplay = display;
+        this.add(display, BorderLayout.CENTER);
         this.add(createToolBar(), BorderLayout.SOUTH);
     }
 
@@ -26,14 +28,21 @@ public class MainFrame extends JFrame {
         return imageDisplay;
     }
 
+    public void add(String name, Command command) {
+        commands.put(name, command);
+    }
+
     private Component createToolBar() {
         JPanel panel = new JPanel();
-
         JButton prev = new JButton("<");
         JButton next = new JButton(">");
 
-        prev.addActionListener(e -> swingDisplay.executeShift(-1));
-        next.addActionListener(e -> swingDisplay.executeShift(1));
+        prev.addActionListener(e -> {
+            if (commands.containsKey("prev")) commands.get("prev").execute();
+        });
+        next.addActionListener(e -> {
+            if (commands.containsKey("next")) commands.get("next").execute();
+        });
 
         panel.add(prev);
         panel.add(next);
