@@ -46,7 +46,7 @@ public class SwingImageDisplay extends JPanel implements ImageDisplay {
         return currentImage != null ? currentImage.name() : "";
     }
 
-    @Override
+    @Override 
     public void on(Shift shift) {
         this.shift = shift;
     }

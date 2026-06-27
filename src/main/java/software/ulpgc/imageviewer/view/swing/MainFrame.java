@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.awt.event.ActionEvent;
 
 public class MainFrame extends JFrame {
     private final ImageDisplay imageDisplay;
@@ -22,6 +23,7 @@ public class MainFrame extends JFrame {
         this.imageDisplay = display;
         this.add(display, BorderLayout.CENTER);
         this.add(createToolBar(), BorderLayout.SOUTH);
+        setupKeyBindings();
     }
 
     public ImageDisplay imageDisplay() {
@@ -47,5 +49,26 @@ public class MainFrame extends JFrame {
         panel.add(prev);
         panel.add(next);
         return panel;
+    }
+
+    private void setupKeyBindings() {
+        InputMap inputMap = this.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap actionMap = this.getRootPane().getActionMap();
+
+        inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "nextImage");
+        actionMap.put("nextImage", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (commands.containsKey("next")) commands.get("next").execute();
+            }
+        });
+
+        inputMap.put(KeyStroke.getKeyStroke("LEFT"), "prevImage");
+        actionMap.put("prevImage", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (commands.containsKey("prev")) commands.get("prev").execute();
+            }
+        });
     }
 }

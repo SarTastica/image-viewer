@@ -6,11 +6,13 @@ import software.ulpgc.imageviewer.control.PreviousCommand;
 import software.ulpgc.imageviewer.io.FileImageLoader;
 import software.ulpgc.imageviewer.model.Image;
 import software.ulpgc.imageviewer.view.swing.MainFrame;
+import com.formdev.flatlaf.FlatLightLaf;
 
 import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
+        FlatLightLaf.setup();
         String rootPath = "fotos";
         File folder = new File(rootPath);
 
