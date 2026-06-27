@@ -1,6 +1,14 @@
 # Image Viewer
 
-Una aplicación de escritorio robusta desarrollada en Java (Swing) para visualizar imágenes locales. 
+Este repositorio refleja el trabajo de la asignatura Ingenieria del Software 2 de la carrera Ingenieria Infórmatica de la ULPGC donde muestra un proyecto que trata de la carga de una serie de imagenes en la carpeta "fotos" que se muestran al ejecutar el Main. Dichas imagenes son reescalables al tamaño de la ventana que se quiera usar.
+
+
+## Modo de ejecución
+
+---
+* Ejecutar el Main.java que esta en la carpeta src/main/java/software/ulpgc/imageviewer
+---
+
 
 ## Características Principales
 
